@@ -91,6 +91,7 @@ function drawEnemies() {
             updateLives();
             if (lives <= 0) {
                 gameOver();
+                restartGameAfterDelay(); // Restart gry po 3 sekundach
             }
         }
 
@@ -120,8 +121,7 @@ function updateLives() {
 
 function gameOver() {
     isGameRunning = false;
-    alert("Koniec gry! Zdobyte punkty: " + score);
-    resetGame();
+    alert("Koniec gry! Zdobyte punkty: " + score); // Wyświetl alert z wynikiem
 }
 
 function resetGame() {
@@ -131,6 +131,13 @@ function resetGame() {
     updateLives();
     enemies.length = 0;
     bullets.length = 0;
+}
+
+function restartGameAfterDelay() { // Restart gry po 3 sekundach
+    setTimeout(() => {
+        resetGame();
+        startGame();
+    }, 5000); // 5000 ms = 5 sekund
 }
 
 function spawnEnemy() {
