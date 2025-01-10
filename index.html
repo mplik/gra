@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gra Kosmiczna</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div id="main-menu" class="main-menu">
+            <h1>Gra Kosmiczna</h1>
+            <button id="start-button">Start Gry</button>
+        </div>
+        <div id="game-container" style="display:none;">
+            <canvas id="gameCanvas"></canvas>
+            <div id="hud">
+                <p>Punkty: <span id="score">0</span></p>
+                <p>Życia: <span id="lives">3</span></p>
+        </div>
+        <div id="touch-controls"> <button id="left-button">lewo</button> <button id="right-button">prawo</button> <button id="shoot-button">strzelaj</button>
+        </div>
+        </div>
+        <script src="game.js"></script>
+    </body>
+</html>

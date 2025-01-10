@@ -1,0 +1,73 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#gameCanvas {
+    display: block;
+    margin: 0 auto;
+    background-color: #f1f1f1;
+}
+
+.main-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: url("images/kosmiczna_gra_image2.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#hud {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    color: white;
+    font-size: 20px;
+}
+
+#touch-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+canvas {
+    background: url('images/tło_galaktyki.jpg') no-repeat center center;
+    background-size: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+#touch-controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+    #gameCanvas {
+        width: 100%;
+        height: auto;
+    }
+
+    #hud {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #touch-controls {
+        flex-direction: row;
+    }
+
+    #touch-controls button {
+        width: auto;
+        padding: 5px 10px;
+        
+    }
+}
