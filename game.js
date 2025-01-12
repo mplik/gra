@@ -31,7 +31,7 @@ const enemies = [];
 const enemySpeed = 2;
 
 function drawSpaceship() { // Rysowanie statku kosmicznego
-    ctx.fillStyle = 'green';
+    ctx.fillStyle = 'blue';
     ctx.beginPath();
     ctx.moveTo(spaceship.x, spaceship.y);
     ctx.lineTo(spaceship.x + spaceship.width / 2, spaceship.y - spaceship.height);
