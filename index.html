@@ -10,16 +10,20 @@
         <div id="main-menu" class="main-menu">
             <h1>Gra Kosmiczna</h1>
             <button id="start-button">Start Gry</button>
+            <div id="leaderboard">
+                <h2>Tablica Wyników</h2>
+                <ol id="leaderboard-list"></ol>
+            </div>
         </div>
         <div id="game-container" style="display:none;">
             <canvas id="gameCanvas"></canvas>
             <div id="hud">
                 <p>Punkty: <span id="score">0</span></p>
                 <p>Życia: <span id="lives">3</span></p>
-        </div>
+            </div>
         <div id="touch-controls"> <button id="left-button">lewo</button> <button id="right-button">prawo</button> <button id="shoot-button">strzelaj</button>
         </div>
         </div>
-        <script src="game.js"></script>
+         <script src="game.js"></script>
     </body>
 </html>

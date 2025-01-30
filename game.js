@@ -225,3 +225,20 @@ document.getElementById('right-button').addEventListener('touchend', function ()
 document.getElementById('shoot-button').addEventListener('touchstart', function () {
     shootBullet();
 });
+
+const leaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+
+function saveScore(score) { // Zapisanie wyniku do listy najlepszych wyników
+    const playerName = prompt('Podaj swoje imię:'); // Pobranie imienia gracza
+    const newScore = { name: playerName, score }; // Utworzenie nowego wyniku
+    leaderboard.push(newScore); // Dodanie wyniku do listy najlepszych wyników
+    leaderboard.sort((a, b) => b.score - a.score); // Posortowanie listy najlepszych wyników
+    leaderboard.splice(10); // Ograniczenie listy najlepszych wyników do 10 wyników
+    localStorage.setItem('leaderboard', JSON.stringify(leaderboard)); // Zapisanie listy najlepszych wyników w pamięci lokalnej
+    updateLeaderboard(); // Aktualizacja listy najlepszych wyników
+}
+
+function updateLeaderboard() {  // Aktualizacja listy najlepszych wyników
+    const leaderboardElement = document.getElementById('leaderboard');
+    leaderboardElement.innerHTML = leaderboard.map(entry => `<li>${entry.name}: ${entry.score}</li>`).join('');
+}
