@@ -138,6 +138,8 @@ function updateLives() {
 function gameOver() {
     isGameRunning = false;
     alert("Koniec gry! Zdobyte punkty: " + score); // Wyświetl alert z wynikiem
+    saveScore(score); // Zapisanie wyniku po zakończeniu gry
+    resetGame(); // Zresetowanie gry
 }
 
 function resetGame() {
@@ -149,11 +151,13 @@ function resetGame() {
     bullets.length = 0;
 }
 
-function restartGameAfterDelay() { // Restart gry po 3 sekundach
-    setTimeout(() => {
-        resetGame();
-        startGame();
-    }, 5000); // 5000 ms = 5 sekund
+function resetGame() {
+    score = 0;
+    lives = 3;
+    updateScore();
+    updateLives();
+    enemies.length = 0;
+    bullets.length = 0;
 }
 
 function spawnEnemy() {
@@ -242,3 +246,6 @@ function updateLeaderboard() {  // Aktualizacja listy najlepszych wyników
     const leaderboardElement = document.getElementById('leaderboard');
     leaderboardElement.innerHTML = leaderboard.map(entry => `<li>${entry.name}: ${entry.score}</li>`).join('');
 }
+
+// Aktualizacja listy najlepszych wyników po załadowaniu strony
+window.onload = updateLeaderboard;
