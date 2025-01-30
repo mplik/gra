@@ -30,8 +30,14 @@ const bullets = [];
 const enemies = [];
 const enemySpeed = 2;
 
-function drawSpaceship() { // Rysowanie statku kosmicznego
-    ctx.fillStyle = 'blue';
+function drawBackground() {
+    ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+}
+
+
+function drawSpaceship() {
+    // Rysowanie statku kosmicznego
+    ctx.fillStyle = 'green';
     ctx.beginPath();
     ctx.moveTo(spaceship.x, spaceship.y);
     ctx.lineTo(spaceship.x + spaceship.width / 2, spaceship.y - spaceship.height);
@@ -43,7 +49,6 @@ function drawSpaceship() { // Rysowanie statku kosmicznego
     ctx.fillStyle = 'red';
     ctx.fillRect(spaceship.x + 10, spaceship.y - 5, 10, 5); // lewy laser
     ctx.fillRect(spaceship.x + spaceship.width - 20, spaceship.y - 5, 10, 5); // prawy laser
-    
 }
 
 function moveSpaceship() {
