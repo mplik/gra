@@ -247,5 +247,5 @@ function updateLeaderboard() {  // Aktualizacja listy najlepszych wyników
     leaderboardElement.innerHTML = leaderboard.map(entry => `<li>${entry.name}: ${entry.score}</li>`).join('');
 }
 
-// Aktualizacja listy najlepszych wyników po załadowaniu strony
+// Aktualizacja listy najlepszych wyników po załadowaniu strony frymowana w funkcji updateLeaderboard
 window.onload = updateLeaderboard;
