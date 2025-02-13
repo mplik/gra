@@ -1,5 +1,3 @@
-const { shootSound } = require("./shootSound");
-
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = 800;
@@ -12,7 +10,11 @@ const scoreDisplay = document.getElementById('score');
 const liveDisplay = document.getElementById('lives');
 
 // Załaduj dźwięk strzału
-const shootSoundEffect = new Audio('sounds/shoot.wav');
+const shootSoundEffect = new Audio('assets/laser.mp3');
+
+// Załaduj dźwięk tła
+const backgroundMusic = new Audio('assets/sounds/retro_video_game.mp3');
+backgroundMusic.loop = true;
 
 
 let score = 0;
