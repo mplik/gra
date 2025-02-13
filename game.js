@@ -1,3 +1,5 @@
+const { shootSound } = require("./shootSound");
+
 const canvas = document.getElementById('gameCanvas');
 const ctx = canvas.getContext('2d');
 canvas.width = 800;
@@ -10,7 +12,8 @@ const scoreDisplay = document.getElementById('score');
 const liveDisplay = document.getElementById('lives');
 
 // Załaduj dźwięk strzału
-const shootSound = new Audio('sounds/shoot.mp3');
+const shootSoundEffect = new Audio('sounds/shoot.wav');
+
 
 let score = 0;
 let lives = 3;
@@ -92,7 +95,7 @@ function shootBullet() {
     });
 
     // Odtwórz dźwięk strzału
-    shootSound.play();
+    shootSoundEffect.play();
 }
 
 function drawEnemies() {
