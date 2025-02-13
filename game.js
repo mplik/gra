@@ -13,7 +13,7 @@ const liveDisplay = document.getElementById('lives');
 const shootSoundEffect = new Audio('assets/laser.mp3');
 
 // Załaduj dźwięk tła
-const backgroundMusic = new Audio('assets/sounds/retro_video_game.mp3');
+const backgroundMusic = document.getElementById('background-music');
 backgroundMusic.loop = true;
 
 
