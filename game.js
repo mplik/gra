@@ -194,6 +194,7 @@ function startGame() {
     spawnEnemy();
     setInterval(spawnEnemy, 1000);
     gameLoop();
+    backgroundMusic.play();
 }
 
 document.getElementById('start-button').addEventListener('click', startGame);
