@@ -14,7 +14,7 @@ const shootSoundEffect = new Audio('https://github.com/mplik/gra/raw/refs/heads/
 
 // Załaduj dźwięk tła
 const backgroundMusic = new Audio('https://github.com/mplik/gra/raw/refs/heads/main/assets/sounds/Retro_video_game_pow.mp3');
-backgroundMusic.loop = true;
+backgroundMusic.loop = false;
 
 
 let score = 0;
