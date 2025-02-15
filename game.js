@@ -10,10 +10,10 @@ const scoreDisplay = document.getElementById('score');
 const liveDisplay = document.getElementById('lives');
 
 // Załaduj dźwięk strzału
-const shootSoundEffect = new Audio('assets/laser.mp3');
+const shootSoundEffect = new Audio('https://github.com/mplik/gra/raw/refs/heads/main/assets/Laser.mp3');
 
 // Załaduj dźwięk tła
-const backgroundMusic = new Audio('assets/sounds/retro_video_game_pow.mp3');
+const backgroundMusic = new Audio('https://github.com/mplik/gra/raw/refs/heads/main/assets/sounds/Retro_video_game_pow.mp3');
 backgroundMusic.loop = true;
 
 
