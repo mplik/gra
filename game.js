@@ -16,6 +16,8 @@ const shootSoundEffect = new Audio('https://github.com/mplik/gra/raw/refs/heads/
 const backgroundMusic = new Audio('https://github.com/mplik/gra/raw/refs/heads/main/assets/sounds/Retro_video_game_pow.mp3');
 backgroundMusic.loop = false;
 
+// Załaduj dźwięk bossa
+const bossSoundEffect = new Audio('https://github.com/mplik/gra/raw/refs/heads/main/assets/sounds/space_game_mus.mp3');
 
 let score = 0;
 let lives = 3;
@@ -100,19 +102,6 @@ function shootBullet() {
     shootSoundEffect.play();
 }
 
-function spawnBoss() {
-    const boss = {
-        x: canvas.width / 2 - 75,
-        y: 50,
-        width: 150,
-        height: 80,
-        dx: 3,
-        dy: 1,
-        health: 10 // liczba strzałów potrzebnych do zniszczenia
-    };
-    enemies.push(boss);
-}
-
 function drawEnemies() {
     enemies.forEach((enemy, index) => {
         if (enemy.width === 150 && enemy.height === 80) {
@@ -178,7 +167,7 @@ function drawEnemies() {
                 updateLives();
                 if (lives <= 0) {
                     gameOver();
-                    restartGameAfterDelay(); // Restart gry po 3 sekundach
+                    setTimeout(resetGame, 3000); // Restart gry po 3 sekundach
                 }
             }
         }
@@ -207,10 +196,23 @@ function drawEnemies() {
     });
 }
 
+function spawnBoss() {
+    const boss = {
+        x: canvas.width / 2 - 75,
+        y: 50,
+        width: 150,
+        height: 80,
+        dx: 3,
+        dy: 1,
+        health: 10 // liczba strzałów potrzebnych do zniszczenia
+    };
+    enemies.push(boss);
+    bossSoundEffect.play(); // Odtwórz dźwięk bossa
+}
 
 function updateScore() {
     scoreDisplay.textContent = score;
-    if (score === 100) {
+    if (score === 100 || score === 300 || score === 500) {
         spawnBoss();
     }
 }
@@ -224,15 +226,6 @@ function gameOver() {
     alert("Koniec gry! Zdobyte punkty: " + score); // Wyświetl alert z wynikiem
     saveScore(score); // Zapisanie wyniku po zakończeniu gry
     resetGame(); // Zresetowanie gry
-}
-
-function resetGame() {
-    score = 0;
-    lives = 3;
-    updateScore();
-    updateLives();
-    enemies.length = 0;
-    bullets.length = 0;
 }
 
 function resetGame() {
