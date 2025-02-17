@@ -100,53 +100,86 @@ function shootBullet() {
     shootSoundEffect.play();
 }
 
+function spawnBoss() {
+    const boss = {
+        x: canvas.width / 2 - 75,
+        y: 50,
+        width: 150,
+        height: 80,
+        dx: 3,
+        dy: 1,
+        health: 10 // liczba strzałów potrzebnych do zniszczenia
+    };
+    enemies.push(boss);
+}
+
 function drawEnemies() {
     enemies.forEach((enemy, index) => {
-        // Ustaw kolor dla głównego kadłuba
-        ctx.fillStyle = 'red';
+        if (enemy.width === 150 && enemy.height === 80) {
+            // Rysowanie szefa (UFO)
+            ctx.fillStyle = 'purple';
+            ctx.beginPath();
+            ctx.ellipse(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, enemy.width / 2, enemy.height / 4, 0, 0, Math.PI * 2);
+            ctx.fill();
 
-        // Rysowanie głównego kadłuba (owal)
-        ctx.beginPath();
-        ctx.ellipse(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, enemy.width / 2, enemy.height / 3, 0, 0, Math.PI * 2);
-        ctx.fill();
+            // Aktualizacja pozycji szefa
+            enemy.x += enemy.dx;
+            enemy.y += enemy.dy;
 
-        // Ustaw kolor dla bocznych skrzydeł
-        ctx.fillStyle = 'orange';
+            // Sprawdzenie kolizji z krawędziami
+            if (enemy.x <= 0 || enemy.x + enemy.width >= canvas.width) {
+                enemy.dx *= -1;
+            }
+            if (enemy.y <= 0 || enemy.y + enemy.height >= canvas.height) {
+                enemy.dy *= -1;
+            }
+        } else {
+            // Ustaw kolor dla głównego kadłuba
+            ctx.fillStyle = 'red';
 
-        // Rysowanie lewego skrzydła (trapez)
-        ctx.beginPath();
-        ctx.moveTo(enemy.x, enemy.y + enemy.height / 3);
-        ctx.lineTo(enemy.x - enemy.width / 4, enemy.y + enemy.height / 2);
-        ctx.lineTo(enemy.x, enemy.y + 2 * enemy.height / 3);
-        ctx.closePath();
-        ctx.fill();
+            // Rysowanie głównego kadłuba (owal)
+            ctx.beginPath();
+            ctx.ellipse(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, enemy.width / 2, enemy.height / 3, 0, 0, Math.PI * 2);
+            ctx.fill();
 
-        // Rysowanie prawego skrzydła (trapez)
-        ctx.beginPath();
-        ctx.moveTo(enemy.x + enemy.width, enemy.y + enemy.height / 3);
-        ctx.lineTo(enemy.x + enemy.width + enemy.width / 4, enemy.y + enemy.height / 2);
-        ctx.lineTo(enemy.x + enemy.width, enemy.y + 2 * enemy.height / 3);
-        ctx.closePath();
-        ctx.fill();
+            // Ustaw kolor dla bocznych skrzydeł
+            ctx.fillStyle = 'orange';
 
-        // Ustaw kolor dla kopuły statku
-        ctx.fillStyle = 'blue';
+            // Rysowanie lewego skrzydła (trapez)
+            ctx.beginPath();
+            ctx.moveTo(enemy.x, enemy.y + enemy.height / 3);
+            ctx.lineTo(enemy.x - enemy.width / 4, enemy.y + enemy.height / 2);
+            ctx.lineTo(enemy.x, enemy.y + 2 * enemy.height / 3);
+            ctx.closePath();
+            ctx.fill();
 
-        // Rysowanie kopuły statku (mały okrąg na górze)
-        ctx.beginPath();
-        ctx.arc(enemy.x + enemy.width / 2, enemy.y + enemy.height / 4, enemy.width / 6, 0, Math.PI * 2);
-        ctx.fill();
+            // Rysowanie prawego skrzydła (trapez)
+            ctx.beginPath();
+            ctx.moveTo(enemy.x + enemy.width, enemy.y + enemy.height / 3);
+            ctx.lineTo(enemy.x + enemy.width + enemy.width / 4, enemy.y + enemy.height / 2);
+            ctx.lineTo(enemy.x + enemy.width, enemy.y + 2 * enemy.height / 3);
+            ctx.closePath();
+            ctx.fill();
 
-        // Aktualizacja pozycji wrogów
-        enemy.y += enemySpeed;
+            // Ustaw kolor dla kopuły statku
+            ctx.fillStyle = 'blue';
 
-        if (enemy.y > canvas.height) {
-            enemies.splice(index, 1);
-            lives--;
-            updateLives();
-            if (lives <= 0) {
-                gameOver();
-                restartGameAfterDelay(); // Restart gry po 3 sekundach
+            // Rysowanie kopuły statku (mały okrąg na górze)
+            ctx.beginPath();
+            ctx.arc(enemy.x + enemy.width / 2, enemy.y + enemy.height / 4, enemy.width / 6, 0, Math.PI * 2);
+            ctx.fill();
+
+            // Aktualizacja pozycji wrogów
+            enemy.y += enemySpeed;
+
+            if (enemy.y > canvas.height) {
+                enemies.splice(index, 1);
+                lives--;
+                updateLives();
+                if (lives <= 0) {
+                    gameOver();
+                    restartGameAfterDelay(); // Restart gry po 3 sekundach
+                }
             }
         }
 
@@ -158,8 +191,16 @@ function drawEnemies() {
                 bullet.y + bullet.height > enemy.y
             ) {
                 bullets.splice(bulletIndex, 1);
-                enemies.splice(index, 1);
-                score++;
+                if (enemy.width === 150 && enemy.height === 80) {
+                    enemy.health--;
+                    if (enemy.health <= 0) {
+                        enemies.splice(index, 1);
+                        score += 10; // dodatkowe punkty za zniszczenie szefa
+                    }
+                } else {
+                    enemies.splice(index, 1);
+                    score++;
+                }
                 updateScore();
             }
         });
@@ -169,6 +210,9 @@ function drawEnemies() {
 
 function updateScore() {
     scoreDisplay.textContent = score;
+    if (score === 100) {
+        spawnBoss();
+    }
 }
 
 function updateLives() {
