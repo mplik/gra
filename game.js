@@ -102,8 +102,42 @@ function shootBullet() {
 
 function drawEnemies() {
     enemies.forEach((enemy, index) => {
+        // Ustaw kolor dla głównego kadłuba
         ctx.fillStyle = 'red';
-        ctx.fillRect(enemy.x, enemy.y, enemy.width, enemy.height);
+
+        // Rysowanie głównego kadłuba (owal)
+        ctx.beginPath();
+        ctx.ellipse(enemy.x + enemy.width / 2, enemy.y + enemy.height / 2, enemy.width / 2, enemy.height / 3, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Ustaw kolor dla bocznych skrzydeł
+        ctx.fillStyle = 'orange';
+
+        // Rysowanie lewego skrzydła (trapez)
+        ctx.beginPath();
+        ctx.moveTo(enemy.x, enemy.y + enemy.height / 3);
+        ctx.lineTo(enemy.x - enemy.width / 4, enemy.y + enemy.height / 2);
+        ctx.lineTo(enemy.x, enemy.y + 2 * enemy.height / 3);
+        ctx.closePath();
+        ctx.fill();
+
+        // Rysowanie prawego skrzydła (trapez)
+        ctx.beginPath();
+        ctx.moveTo(enemy.x + enemy.width, enemy.y + enemy.height / 3);
+        ctx.lineTo(enemy.x + enemy.width + enemy.width / 4, enemy.y + enemy.height / 2);
+        ctx.lineTo(enemy.x + enemy.width, enemy.y + 2 * enemy.height / 3);
+        ctx.closePath();
+        ctx.fill();
+
+        // Ustaw kolor dla kopuły statku
+        ctx.fillStyle = 'blue';
+
+        // Rysowanie kopuły statku (mały okrąg na górze)
+        ctx.beginPath();
+        ctx.arc(enemy.x + enemy.width / 2, enemy.y + enemy.height / 4, enemy.width / 6, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Aktualizacja pozycji wrogów
         enemy.y += enemySpeed;
 
         if (enemy.y > canvas.height) {
@@ -131,6 +165,7 @@ function drawEnemies() {
         });
     });
 }
+
 
 function updateScore() {
     scoreDisplay.textContent = score;
