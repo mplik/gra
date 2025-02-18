@@ -71,7 +71,7 @@ function moveSpaceship() {
 
 function drawBullets() {
     bullets.forEach((bullet, index) => {
-        ctx.fillStyle = 'orange';
+        ctx.fillStyle = '#39FF14'; // Neonowy kolor pocisków
         ctx.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
         bullet.y -= bullet.speed;
 
