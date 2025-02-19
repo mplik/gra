@@ -29,15 +29,28 @@ Gra to typowa gra zręcznościowa. Strzelanina statków kosmicznych w galaktyce.
 
 ## Zrzuty ekranu
 
-![zrzut ekranu1]()
+![zrzut ekranu1][screenshotLink]
 
-![zrzut ekranu2]()
+![zrzut ekranu2][screenCaptureDef]
 
 ## Kontrybucje
 
 Chcesz przyczynić się do rozwoju gry  otwórz pull requesta lub zgłoś problem w zakładce Issues.
 
+## Rozwiązywanie problemów
+# Często zadawane pytania
+
+# P: Gra nie uruchamia się poprawnie. Co robić?
+- O:Upewnij się, że wszystkie pliki zostały poprawnie skolonowane i otwierasz lpik index.html w przeglądarce.
+
+# P: Jak mogę dodać własne dźwięki do gru?
+- O:Dodaj pliki dźwiękowe do katalogu assets/sounds i zaktualizuj odpowiednie ścieżki w pliku game.js
+
 # Licencja 
 
 - Ten projekt jest licencjonowany na podstawie licencji MIT. Zobacz plik LICENSE po więcej informacji.
 
+
+
+[screenshotLink]: https://github.com/mplik/gra/blob/main/images/screen/kosmiczna_gra2_screen2.jpg?raw=true
+[screenCaptureDef]: https://github.com/mplik/gra/blob/main/images/screen/kosmiczna_gra2_screen3.jpg?raw=true
