@@ -27,6 +27,12 @@ Gra to typowa gra zręcznościowa. Strzelanina statków kosmicznych w galaktyce.
 - Użyj klawiszy strzalek do poruszania się w lewo i w prawo.
 - Użyj klawisza spacji aby strzelać.
 
+## Zrzuty ekranu
+
+![zrzut ekranu1]()
+
+![zrzut ekranu2]()
+
 ## Kontrybucje
 
 Chcesz przyczynić się do rozwoju gry  otwórz pull requesta lub zgłoś problem w zakładce Issues.
