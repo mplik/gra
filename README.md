@@ -1,3 +1,5 @@
+<!-- GitAds-Verify: K4R8VGORI7EY4AW2IBM4RXF8HT7E6M4L -->
+
 # Gra Kosmiczna
 
 Gra to typowa gra zręcznościowa. Strzelanina statków kosmicznych w galaktyce.
