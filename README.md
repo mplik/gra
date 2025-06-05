@@ -4,6 +4,13 @@
 
 Gra to typowa gra zręcznościowa. Strzelanina statków kosmicznych w galaktyce.
 
+---
+
+## GitAds Sponsored
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=mplik/gra@github)](https://gitads.dev/v1/ad-track?source=mplik/gra@github)
+
+---
+
 ## Demo
 [Gra Kosmiczna - Demo](https://mplik.github.io/gra/)
 
@@ -28,6 +35,7 @@ Gra to typowa gra zręcznościowa. Strzelanina statków kosmicznych w galaktyce.
 - Kliknij przycisk "Start Gry" w głównym menu aby rozpocząć grę.
 - Użyj klawiszy strzalek do poruszania się w lewo i w prawo.
 - Użyj klawisza spacji aby strzelać.
+- Rozprawiaj się ze swoimi wrogami w kosmicznej galaktyce.
 
 ## Zrzuty ekranu
 
